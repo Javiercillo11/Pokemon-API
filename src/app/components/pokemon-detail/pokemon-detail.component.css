@@ -1,0 +1,36 @@
+.sheet {
+  height: 50vh;
+}
+
+.sheet__img {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sheet__tab {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.sheet__item {
+  display: flex;
+  flex-direction: column;
+}
+.sheet__item div {
+  margin-top: 20px;
+}
+
+.sheet__progress {
+  display: flex;
+}
+.sheet__progress div {
+  margin-top: 20px;
+}
+
+.sheet__item_label {
+  margin-right: 20px;
+  font-weight: bold;
+}/*# sourceMappingURL=pokemon-detail.component.css.map */
