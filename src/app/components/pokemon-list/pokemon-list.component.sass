@@ -1,25 +1,24 @@
-
-
-.header
-    height: 150px
+.header 
+    height: 90px
     display: flex
     align-items: center
 
-    h1
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    .search 
+        width: 30%
 
-.search
-    width: 70%
+    .btn_mode 
+        margin-left: auto
+        width: 150px
 
-
-.pokemon__list
-    height: 70vh    
+.pokemon__list 
+    height: 75vh
     overflow-y: scroll
-    &::-webkit-scrollbar-thumb
-        background: green
+
+    &::-webkit-scrollbar-thumb 
+        background: yellow
         border-radius: 50px
 
-.card
+.card 
     display: flex
     justify-content: space-between
     padding-left: 20px
@@ -30,37 +29,38 @@
     margin-bottom: 10px
     overflow: hidden
 
-.card__bg
-    position: absolute
-    bottom: 15%
-    right: 10%
-    color: white
-    height: 130px
-    z-index: 1
-    opacity: 0.2
+    .card__bg 
+        position: absolute
+        bottom: 15%
+        right: 10%
+        color: white
+        height: 130px
+        z-index: 1
+        opacity: 0.2
 
-.card__info
-    display: flex
-    flex-direction: column
-    color: white
-    text-transform: capitalize
-    h2
-        border-radius: 40px
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-        -webkit-text-stroke-width: .50px
-        -webkit-text-stroke-color: black
-    span
-        border-radius: 40px
-        text-align: center
-        margin-top: 5px
-        margin-right: 20px
+    .card__info 
+        display: flex
+        flex-direction: column
+        color: white
+        text-transform: capitalize
 
-.card__img
-    display: flex
-    justify-content: center
-    align-items: center
-    padding-right: 3rem
-    padding-top: 10px
-    padding-bottom: 15px
-    z-index: 10
-    
+        h2 
+            border-radius: 40px
+            font-family: sans-serif
+            -webkit-text-stroke-width: .50px
+            -webkit-text-stroke-color: black
+
+        span 
+            border-radius: 40px
+            text-align: center
+            margin-top: 5px
+            margin-right: 20px
+
+    .card__img 
+        display: flex
+        justify-content: center
+        align-items: center
+        padding-right: 3rem
+        padding-top: 10px
+        padding-bottom: 15px
+        z-index: 10

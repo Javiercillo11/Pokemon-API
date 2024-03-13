@@ -17,13 +17,13 @@ export class PokemonListComponent implements OnInit {
   search: FormControl = new FormControl('');
   pokemons: PokemonDetail[] = [];
   classicMode: boolean = true;
-
   private offset: number;
   isLoading: boolean = false;
   isLastPage = false;
-
   searchPokemon: PokemonDetail = new PokemonDetail();
   isSearching = false;
+
+  searchTerm: string = '';
 
   constructor(
     private pokemonService: PokemonService,
@@ -54,28 +54,24 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  onSearchPokemon(): void {
-    const value = this.search.value;
-    if (value === '') {
+  filterPokemonList() {
+    if (this.searchTerm.trim() !== '') {
+      this.isSearching = true;
+      this.pokemons = this.pokemons.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
       this.isSearching = false;
     } else {
-      this.isSearching = true;
-      this.isLoading = true;
-      this.pokemonService.getPokemonDetail(value).subscribe(
-        (pokemon: PokemonDetail) => {
-          this.searchPokemon = pokemon;
-          this.isLoading = false;
-        },
-        (error: any) => {
-          this.isLoading = false;
-          if (error.status === 404) {
-            this.snackBar.open('Sorry, Pokemon not found', 'Ok', {
-              duration: 5000,
-            });
-          }
-        }
-      );
+      // Si el término de búsqueda está vacío, recargamos la lista de Pokémon
+      this.resetPokemonList();
     }
+  }
+  
+  resetPokemonList() {
+    this.offset = 0;
+    this.pokemons = [];
+    this.isLastPage = false;
+    this.getPage(this.offset);
   }
 
   onScroll(event: Event): void {
@@ -92,10 +88,10 @@ export class PokemonListComponent implements OnInit {
     });
 
     forkJoin([...arr]).subscribe((pokemons: PokemonDetail[]) => {
-  this.pokemons.push(...pokemons);
-  this.offset += 20;
-  this.isLoading = false;
-});
+      this.pokemons.push(...pokemons);
+      this.offset += 20;
+      this.isLoading = false;
+    });
   }
 
   getPrincipalType(list: any[]) {

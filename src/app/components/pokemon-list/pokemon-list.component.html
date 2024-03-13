@@ -1,24 +1,17 @@
 <div class="container">
     <div class="row header">
-   <!--      <h1 class="title col-sm-12 col-md-12 col-lg-3 col-xl-3">Pokedex</h1> -->
         <mat-form-field class="search col-sm-12 col-md-12 col-lg-8 col-xl-8" floatLabel="always">
             <mat-label>Pokemon name</mat-label>
-            <input matInput [formControl]="search" (keydown.enter)="onSearchPokemon()" placeholder="Pikachu or 25">
+            <input matInput [(ngModel)]="searchTerm" (ngModelChange)="filterPokemonList()" placeholder="Pikachu">
         </mat-form-field>
-        <section class="col-3">
-            <mat-slide-toggle
+        <section class="col-3" class="btn_mode">
+            <mat-slide-toggle class="btn_mode_toggle"
             color="primary"
             [checked]="classicMode"
             (change)="classicMode = !classicMode">
             {{classicMode ? 'Classic' : 'Gif'}}
             </mat-slide-toggle>
         </section>
-    </div>
-    <div class="row justify-content-center" *ngIf="isLoading">
-        <div class="col-4">
-            <span>Loading.... please wait!!</span>
-            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        </div>
     </div>
     <div *ngIf="!isSearching" class="row pokemon__list" (scroll)="onScroll($event)">
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4" *ngFor="let pokemon of pokemons" (click)="onDetail(pokemon)">
