@@ -10,11 +10,13 @@ import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-deta
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from "./shared/shared.module";
 import { PokemonService } from "./service/pokemon.service";
+import { AppRoutingModule } from "./app-routing.module"
+
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { PokemonService } from "./service/pokemon.service";
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
