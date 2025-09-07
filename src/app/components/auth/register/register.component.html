@@ -1,1 +1,22 @@
-<p>register works!</p>
+<div class="body">
+    <div class="login">
+        <form [formGroup]="myForm" (ngSubmit)="sendForm()">
+            <img src="./assets/img/usuario.png" width="50%">
+            <h1>Registro</h1>
+            <mat-form-field class="ancho" appearance="fill">
+                <mat-label for="email">Email</mat-label>
+                <input type="email" matInput autocomplete="off" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="ancho" appearance="fill">
+                <mat-label for="nomrbe">Nombre</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="nombre">
+            </mat-form-field>
+            <mat-form-field class="ancho" appearance="fill">
+                <mat-label for="password">Contraseña</mat-label>
+                <input type="password" matInput autocomplete="off" formControlName="password">
+            </mat-form-field>
+            <br>
+            <button type="submit" class="ancho" mat-raised-button color="primary" [disabled]="myForm.invalid">Registrarme</button>
+        </form>
+    </div>
+</div>
