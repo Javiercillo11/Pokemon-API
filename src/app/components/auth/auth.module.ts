@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,6 +35,9 @@ const routes: Routes = [
     MatSliderModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatIconModule
   ],
 })
 export class AuthModule {}

@@ -1,8 +1,8 @@
 <div class="body">
     <div class="login">
-        <form [formGroup]="myForm" (ngSubmit)="onLogin()">
-            <br><br><br><br>
-            <h1>Iniciar Sesion</h1>
+        <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+        <form *ngIf="!loading" [formGroup]="myForm" (ngSubmit)="onLogin()">
+            <h1>Login</h1>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label for="email">Email</mat-label>
                 <input type="email" matInput autocomplete="off" formControlName="email">
@@ -13,6 +13,7 @@
             </mat-form-field>
             <br>
             <button type="submit" class="ancho" mat-raised-button color="primary" [disabled]="myForm.invalid">Iniciar Sesion</button>
+            <a mat-button [routerLink]="['/auth/register']" routerLinkActive="router-link-active" >Registro</a>
         </form>
     </div>
-</div>
+</div> 

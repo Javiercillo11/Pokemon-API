@@ -1,7 +1,6 @@
 <div class="body">
     <div class="login">
         <form [formGroup]="myForm" (ngSubmit)="sendForm()">
-            <img src="./assets/img/usuario.png" width="50%">
             <h1>Registro</h1>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label for="email">Email</mat-label>
@@ -17,6 +16,8 @@
             </mat-form-field>
             <br>
             <button type="submit" class="ancho" mat-raised-button color="primary" [disabled]="myForm.invalid">Registrarme</button>
+            <br>
+            <a mat-button [routerLink]="['/auth/login']" routerLinkActive="router-link-active" >Login</a>
         </form>
     </div>
 </div>

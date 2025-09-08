@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private user: BehaviorSubject<string> = new BehaviorSubject<string>('no user');
-  public user$: Observable<string> = this.user.asObservable();
+  private usersUrl = '../../../assets/db.json';
 
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
-  public login(email: string, password: string): void {
-    const username = this.extractUsernameFromEmail(email);
-    this.user.next(username);
+  getUsers(): Observable<User[]> {
+    return this.http.get<any[]>(this.usersUrl)
+      .pipe(
+        map(response => {
+          if ('users' in response) {
+            return response.users as User[];
+          } else {
+            throw new Error('No se encontró la propiedad "users" en la respuesta del servidor');
+          }
+        })
+      );
   }
 
-  private extractUsernameFromEmail(email: string): string {
-    return email.split('@')[0];
+  login(email: string, password: string): Observable<boolean> {
+    return this.getUsers().pipe(
+      map(users => {
+        return users.some(u => u.email === email && u.password === password);
+      })
+    );
   }
+
 }
