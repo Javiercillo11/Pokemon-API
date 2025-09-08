@@ -5,7 +5,7 @@
             <input matInput [(ngModel)]="searchTerm" (ngModelChange)="filterPokemonList()" placeholder="Pikachu">
         </mat-form-field>
         <section class="col-3" class="btn_mode">
-            <a style="float: right;" mat-button [routerLink]="['']" routerLinkActive="router-link-active">
+            <a style="float: right;" (click)="onLogout()">
                 <mat-icon>logout</mat-icon>
             </a>
             <br>

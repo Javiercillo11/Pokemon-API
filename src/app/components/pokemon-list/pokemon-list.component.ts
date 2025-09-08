@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin, Observable } from 'rxjs';
 import { PokemonDetail } from '../../models/pokemon.detail';
 import { PokemonList } from '../../models/pokemon.list';
 import { PokemonService } from '../../service/pokemon.service';
 import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -28,7 +28,7 @@ export class PokemonListComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private bottomSheet: MatBottomSheet,
-    private snackBar: MatSnackBar
+    private router: Router
   ) {
     this.offset = 0;
   }
@@ -103,4 +103,10 @@ export class PokemonListComponent implements OnInit {
       data: { pokemon, classicMode: this.classicMode },
     });
   }
+
+  onLogout(): void {
+  localStorage.removeItem('token');
+  this.router.navigate(['/auth/login']);
+}
+
 }

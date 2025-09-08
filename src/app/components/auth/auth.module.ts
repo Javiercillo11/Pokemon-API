@@ -14,11 +14,12 @@ import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { authGuard } from './models/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pages', component: PokemonListComponent },
+  { path: 'pages', component: PokemonListComponent, canActivate: [authGuard]},
   { path: '**', redirectTo: 'login' },
 ];
 
