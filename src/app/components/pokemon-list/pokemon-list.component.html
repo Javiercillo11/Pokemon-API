@@ -5,11 +5,13 @@
             <input matInput [(ngModel)]="searchTerm" (ngModelChange)="filterPokemonList()" placeholder="Pikachu">
         </mat-form-field>
         <section class="col-3" class="btn_mode">
-            <mat-slide-toggle class="btn_mode_toggle"
-            color="primary"
-            [checked]="classicMode"
-            (change)="classicMode = !classicMode">
-            {{classicMode ? 'Classic' : 'Gif'}}
+            <a style="float: right;" mat-button [routerLink]="['']" routerLinkActive="router-link-active">
+                <mat-icon>logout</mat-icon>
+            </a>
+            <br>
+            <mat-slide-toggle class="btn_mode_toggle" color="primary" [checked]="classicMode"
+                (change)="classicMode = !classicMode">
+                {{classicMode ? 'Classic' : 'Gif'}}
             </mat-slide-toggle>
         </section>
     </div>
@@ -19,11 +21,13 @@
                 <img class="card__bg" src="../../../assets/images/pokeball-background.png" alt="pokeball-card">
                 <div class="card__info">
                     <h2 class="color-white">{{pokemon.name}}</h2>
-                    <span class="color-white {{'bg-color-' + getPrincipalType(pokemon.types)}}" *ngFor="let type of pokemon.types">{{type.type.name}}</span>
+                    <span class="color-white {{'bg-color-' + getPrincipalType(pokemon.types)}}"
+                        *ngFor="let type of pokemon.types">{{type.type.name}}</span>
                 </div>
                 <div class="card__img">
                     <img *ngIf="classicMode" src="{{ pokemon.sprites.front_default }}" [alt]="pokemon.name">
-                    <img *ngIf="!classicMode" src="https://projectpokemon.org/images/normal-sprite/{{pokemon.name}}.gif" [alt]="searchPokemon.name">
+                    <img *ngIf="!classicMode" src="https://projectpokemon.org/images/normal-sprite/{{pokemon.name}}.gif"
+                        [alt]="searchPokemon.name">
                 </div>
             </div>
         </div>

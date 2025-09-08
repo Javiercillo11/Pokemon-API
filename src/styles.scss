@@ -65,3 +65,5 @@ $general: ('black', $black), ('white', $white), ('grass', $grass), ('grass-light
         height: #{$i * 1%}
     }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
