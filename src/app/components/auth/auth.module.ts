@@ -5,7 +5,6 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-/* ANGULAR MAT */
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,11 +13,12 @@ import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { authGuard } from './models/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pages', component: PokemonListComponent },
+  { path: 'pages', component: PokemonListComponent, canActivate: [authGuard]},
   { path: '**', redirectTo: 'login' },
 ];
 
@@ -40,4 +40,5 @@ const routes: Routes = [
     MatIconModule
   ],
 })
+
 export class AuthModule {}

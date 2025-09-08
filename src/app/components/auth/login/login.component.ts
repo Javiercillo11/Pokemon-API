@@ -29,6 +29,8 @@ export class LoginComponent {
       const { email, password } = this.myForm.value;
       this.authService.login(email, password).subscribe((success) => {
         if (success) {
+          const fakeToken = '12$3NyQ6789a#bc91def';
+          localStorage.setItem('token', fakeToken);
           this.fakeLoading();
         } else {
           this.error();
