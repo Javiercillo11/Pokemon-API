@@ -22,7 +22,6 @@ export class PokemonListComponent implements OnInit {
   isLastPage = false;
   searchPokemon: PokemonDetail = new PokemonDetail();
   isSearching = false;
-
   searchTerm: string = '';
 
   constructor(
@@ -105,8 +104,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   onLogout(): void {
-  localStorage.removeItem('token');
-  this.router.navigate(['/auth/login']);
-}
-
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+  }
 }

@@ -5,7 +5,6 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-/* ANGULAR MAT */
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -41,4 +40,5 @@ const routes: Routes = [
     MatIconModule
   ],
 })
+
 export class AuthModule {}
