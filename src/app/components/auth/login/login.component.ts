@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {User} from '../models/user.model'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   myForm: FormGroup;
   loading = false;
+  userData: User[] = []
 
   constructor(
     private authService: AuthService,
@@ -22,6 +24,10 @@ export class LoginComponent {
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
+  }
+
+  ngOnInit(): void {
+    this.getUser()
   }
 
   public onLogin(): void {
@@ -38,6 +44,18 @@ export class LoginComponent {
         }
       });
     }
+  }
+
+  getUser(): void {
+    this.authService.getUsers().subscribe({
+      next: (data) => {
+        this.userData = data; // Guardamos los datos del usuario
+        console.log('Datos del usuario:', this.userData);
+      },
+      error: (err) => {
+        console.error('Error al obtener usuario:', err);
+      }
+    });
   }
 
   error() {

@@ -13,17 +13,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<any[]>(this.usersUrl)
-      .pipe(
-        map(response => {
-          if ('users' in response) {
-            return response.users as User[];
-          } else {
-            throw new Error('No se encontró la propiedad "users" en la respuesta del servidor');
-          }
-        })
-      );
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<any[]>(this.usersUrl)
+  //     .pipe(
+  //       map(response => {
+  //         if ('users' in response) {
+  //           return response.users as User[];
+  //         } else {
+  //           throw new Error('No se encontró la propiedad "users" en la respuesta del servidor');
+  //         }
+  //       })
+  //     );
+  // }
+
+   getUsers(): Observable<User[]> {
+    return this.http.get<any[]>('http://localhost:3000/usuarios')
   }
 
   login(email: string, password: string): Observable<boolean> {
