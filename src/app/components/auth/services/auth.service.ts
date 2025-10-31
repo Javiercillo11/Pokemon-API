@@ -9,25 +9,14 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 
-  private usersUrl = '../../../assets/db.json';
-
   constructor(private http: HttpClient) { }
-
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<any[]>(this.usersUrl)
-  //     .pipe(
-  //       map(response => {
-  //         if ('users' in response) {
-  //           return response.users as User[];
-  //         } else {
-  //           throw new Error('No se encontró la propiedad "users" en la respuesta del servidor');
-  //         }
-  //       })
-  //     );
-  // }
 
    getUsers(): Observable<User[]> {
     return this.http.get<any[]>('http://localhost:3000/usuarios')
+  }
+
+  register(user: User): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/registro', user);
   }
 
   login(email: string, password: string): Observable<boolean> {

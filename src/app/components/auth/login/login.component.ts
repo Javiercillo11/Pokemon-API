@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit{
   getUser(): void {
     this.authService.getUsers().subscribe({
       next: (data) => {
-        this.userData = data; // Guardamos los datos del usuario
-        console.log('Datos del usuario:', this.userData);
+        this.userData = data;
       },
       error: (err) => {
         console.error('Error al obtener usuario:', err);
